@@ -1,0 +1,3264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eran Studio - Photography Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        
+        /* Fixed Header with Glass Effect */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            z-index: 1000;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .back-btn {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo span {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icons i {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .icons i:hover {
+            transform: scale(1.05);
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Fixed Navigation Bar with Glass Effect */
+        .fixed-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.18);
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .nav-total {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.35);
+        }
+        
+        /* Step Navigation */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .step.active {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Content Areas */
+        .welcome-content {
+            text-align: center;
+            margin-bottom: 60px;
+            width: 100%;
+        }
+        
+        .services-content {
+            text-align: center;
+            width: 100%;
+            display: none;
+        }
+        
+        .about-content {
+            text-align: center;
+            width: 100%;
+            display: none;
+        }
+        
+        .photography-content {
+            width: 100%;
+            display: none;
+        }
+        
+        .reels-content {
+            width: 100%;
+            display: none;
+        }
+        
+        .portraits-content {
+            width: 100%;
+            display: none;
+        }
+        
+        .step-content {
+            display: none;
+        }
+        
+        .step-content.active {
+            display: block;
+        }
+        
+        .welcome-icon {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            animation: float 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .welcome-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+        
+        .btn {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.35);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            width: 100%;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        
+        .services {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .service {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        /* Enhanced gray scale effect for selected services */
+        .service.selected {
+            filter: grayscale(80%);
+            opacity: 0.9;
+            transform: none;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service.selected:hover {
+            transform: none;
+        }
+        
+        .service.selected::before {
+            content: "SELECTED";
+            position: absolute;
+            top: 10px;
+            right: -25px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #4a4e69;
+            padding: 5px 30px;
+            font-size: 12px;
+            font-weight: 700;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .service.selected::after {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #4a4e69;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .service-icon i {
+            font-size: 36px;
+            color: white;
+        }
+        
+        .service-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-desc {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        
+        .about-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .about-section {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+            text-align: left;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        /* Photography Booking Styles */
+        .photography-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .photography-subtitle {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        /* Full Background Swipe Container */
+        .swipe-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .swipe-wrapper {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .swipe-slide {
+            width: 50%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .swipe-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: softMove 20s infinite alternate ease-in-out;
+        }
+        
+        @keyframes softMove {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        
+        .swipe-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .swipe-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .swipe-price {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .swipe-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .swipe-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .swipe-dot.active {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Selection Sections */
+        .selection-section {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title i {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .selection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .selection-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .selection-card.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .selection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .selection-icon {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .selection-label {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .selection-price {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .photo-option-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .photo-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        
+        .photo-option-label {
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .photo-option-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .quantity-btn:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.35);
+        }
+        
+        .quantity-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .quantity-display {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            min-width: 30px;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .price-display {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-align: right;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .summary-section {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .summary-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .summary-value {
+            font-weight: 500;
+            color: white;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            margin-top: 10px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .grand-total-row {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            margin-top: 10px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            gap: 10px;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            padding: 20px;
+        }
+        
+        .add-service-btn {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .add-service-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Reels and Portraits Styles */
+        .packages {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            margin-top: 25px;
+        }
+        
+        .package {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 25px 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        
+        .package:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .package-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .package-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .package-details {
+            margin-bottom: 20px;
+        }
+        
+        .package-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .package-detail i {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .package-features {
+            margin-bottom: 20px;
+        }
+        
+        .package-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .package-feature i {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 3px;
+        }
+        
+        .package-best-for {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .package-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .select-btn {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 100%;
+        }
+        
+        .select-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        .select-btn.selected {
+            background: rgba(255, 255, 255, 0.8);
+            color: #4a4e69;
+        }
+        
+        /* Portrait Sizes */
+        .portrait-sizes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .portrait-size {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .portrait-size:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .portrait-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .portrait-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .portrait-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .portrait-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .portrait-dimensions {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+        
+        .portrait-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .portrait-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        .portrait-select-btn {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .portrait-select-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        .portrait-select-btn.selected {
+            background: rgba(255, 255, 255, 0.8);
+            color: #4a4e69;
+        }
+        
+        .portrait-quantity-control {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .portrait-quantity-control.active {
+            display: flex;
+        }
+        
+        .footer {
+            margin-top: auto;
+            padding: 20px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            width: 100%;
+        }
+        
+        /* Send Quote Button */
+        .send-quote-btn {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 16px;
+        }
+        
+        .send-quote-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* View Summary Button on Services Page */
+        .view-summary-btn {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 16px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .view-summary-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Overall Order Summary Styles */
+        .overall-summary {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+        }
+        
+        .overall-summary.active {
+            display: block;
+        }
+        
+        .overall-summary-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .overall-summary-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .overall-summary-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .overall-summary-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .overall-summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        
+        .overall-summary-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .overall-summary-value {
+            font-weight: 500;
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .portrait-sizes {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .selection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .features {
+                gap: 15px;
+            }
+            
+            .feature {
+                width: 100%;
+            }
+            
+            .welcome-icon {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .fixed-nav {
+                padding: 12px 15px;
+            }
+            
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .swipe-container {
+                height: 50vh;
+            }
+            
+            .package-controls, .portrait-controls {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .quantity-control {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header>
+        <div class="header-left">
+            <i class="fas fa-arrow-left back-btn" id="backBtn" style="display: none;"></i>
+        </div>
+        <div class="logo">Eran <span>Studio</span></div>
+        <div class="icons">
+            <i class="fas fa-question-circle"></i>
+            <i class="fas fa-cog"></i>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Welcome Page -->
+        <div class="welcome-content" id="welcomeContent">
+            <div class="welcome-icon">
+                <img src="https://i.ibb.co/vvrSRLvz/Eran-logo-l.png" alt="Eran Studio Logo">
+            </div>
+            <h1>Welcome</h1>
+            <p class="subtitle">What can we create for you today?</p>
+            <button class="btn" id="viewServicesBtn">
+                View services
+            </button>
+            
+            <div class="features">
+                <div class="feature" id="aboutFeature">
+                    <div class="feature-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="feature-title">About Us</div>
+                    <div class="feature-desc">Learn more about our vision, style, and who we are.</div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="feature-title">Pricing</div>
+                    <div class="feature-desc">Transparent rates for Photoshoots, Reels, and Portraits.</div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="feature-title">Contact</div>
+                    <div class="feature-desc">Reach us easily via WhatsApp, phone, or location.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services Page -->
+        <div class="services-content" id="servicesContent">
+            <h1>Our Services</h1>
+            <p class="subtitle">Choose the service that fits your needs</p>
+            
+            <div class="services">
+                <div class="service" id="photographyService">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="service-title">Photography</div>
+                    <div class="service-desc">Professional photo sessions for all occasions</div>
+                </div>
+                
+                <div class="service" id="reelsService">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="service-title">Reels</div>
+                    <div class="service-desc">Creative video content for social media</div>
+                </div>
+                
+                <div class="service" id="portraitsService">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="service-title">Portraits (Canvas)</div>
+                    <div class="service-desc">Beautiful portrait artwork on canvas</div>
+                </div>
+            </div>
+            
+            <!-- View Summary Button -->
+            <button class="view-summary-btn" id="viewSummaryServices">
+                <i class="fas fa-list-alt"></i> View Order Summary
+            </button>
+            
+            <!-- Overall Order Summary -->
+            <div class="overall-summary" id="overallSummary">
+                <div class="overall-summary-title">Your Complete Order</div>
+                <div id="overallSummaryContent">
+                    <div class="empty-message">No services selected yet</div>
+                </div>
+                <div class="grand-total-row">
+                    <div class="summary-label">Grand Total:</div>
+                    <div class="summary-value" id="overallGrandTotal">K0</div>
+                </div>
+                
+                <button class="send-quote-btn" id="sendOverallQuote">
+                    <i class="fab fa-whatsapp"></i> Send Quote via WhatsApp
+                </button>
+            </div>
+        </div>
+        
+        <!-- About Us Page -->
+        <div class="about-content" id="aboutContent">
+            <h1>About Us</h1>
+            
+            <div class="about-image">
+                <img src="https://i.ibb.co/0VXyVgq4/IMG-9039.jpg" alt="Eran Studio Photography">
+            </div>
+            
+            <div class="about-subtitle">Beautiful & Emotive</div>
+            
+            <div class="about-section">Our Approach: Capturing Soul & Story</div>
+            
+            <div class="about-text">
+                At Eran Studio, every frame tells a story. We bring heart, vision, and soul into every photograph, reel, and canvas we create. With years of experience behind the lens, we are drawn to the moments that feel natural, raw, and full of life — from quiet, intimate emotions to the vibrant energy of a lively scene.
+            </div>
+            
+            <div class="about-text">
+                We capture the full story of your experience so that it feels effortless, genuine, and true to you. Our work balances beautifully composed, editorial styling with authentic moments that reflect the real you.
+            </div>
+            
+            <button class="btn" id="backFromAboutBtn">
+                Back to Home
+            </button>
+        </div>
+        
+        <!-- Photography Booking Page -->
+        <div class="photography-content" id="photographyContent">
+            <h1 class="photography-title">Photography Service</h1>
+            <p class="photography-subtitle">Customize your photography package</p>
+            
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step active" data-step="1"></div>
+                <div class="step" data-step="2"></div>
+                <div class="step" data-step="3"></div>
+            </div>
+            
+            <!-- Step 1: Number of People with Swipe -->
+            <div class="step-content active" id="step1">
+                <div class="swipe-container" id="swipeContainer">
+                    <div class="swipe-wrapper" id="swipeWrapper">
+                        <div class="swipe-slide">
+                            <img src="https://i.ibb.co/XfbNbFmy/IMG-9015.jpg" alt="1-2 People" class="swipe-image">
+                            <div class="swipe-overlay">
+                                <div class="swipe-title">1-2 People</div>
+                                <div class="swipe-price">K2,000 per picture</div>
+                            </div>
+                        </div>
+                        <div class="swipe-slide">
+                            <img src="https://i.ibb.co/4RJchNvW/IMG-3622.jpg" alt="3-7 People" class="swipe-image">
+                            <div class="swipe-overlay">
+                                <div class="swipe-title">3-7 People</div>
+                                <div class="swipe-price">K3,000 per picture</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swipe-indicator">
+                    <div class="swipe-dot active" data-slide="0"></div>
+                    <div class="swipe-dot" data-slide="1"></div>
+                </div>
+            </div>
+            
+            <!-- Step 2: Pictures & Express -->
+            <div class="step-content" id="step2">
+                <div class="selection-section">
+                    <div class="section-title">
+                        <i class="fas fa-camera"></i>
+                        Normal Pictures
+                    </div>
+                    <div class="photo-option-controls">
+                        <div class="photo-option">
+                            <div class="photo-option-label">Normal Pictures</div>
+                            <div class="photo-option-control">
+                                <button class="select-btn" id="selectNormalBtn">Select</button>
+                            </div>
+                        </div>
+                        <div class="photo-option" id="normalQuantityControl" style="display: none;">
+                            <div class="photo-option-label">Quantity</div>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" id="decreaseNormal">-</button>
+                                <div class="quantity-display" id="normalQuantity">0</div>
+                                <button class="quantity-btn" id="increaseNormal">+</button>
+                            </div>
+                            <div class="price-display" id="normalPrice">K0</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="selection-section">
+                    <div class="section-title">
+                        <i class="fas fa-bolt"></i>
+                        Express Service
+                    </div>
+                    <div class="selection-grid">
+                        <div class="selection-card" data-express="24hrs">
+                            <div class="selection-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="selection-label">24hrs Express</div>
+                            <div class="selection-price">K3,000/pic</div>
+                        </div>
+                        <div class="selection-card" data-express="12hrs">
+                            <div class="selection-icon">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                            <div class="selection-label">12hrs Express</div>
+                            <div class="selection-price">K4,500/pic</div>
+                        </div>
+                        <div class="selection-card" data-express="6hrs">
+                            <div class="selection-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="selection-label">6hrs Express</div>
+                            <div class="selection-price">K6,000/pic</div>
+                        </div>
+                        <div class="selection-card active" data-express="none">
+                            <div class="selection-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="selection-label">No Express</div>
+                            <div class="selection-price">Standard</div>
+                        </div>
+                    </div>
+                    <div class="photo-option-controls">
+                        <div class="photo-option">
+                            <div class="photo-option-label">Express Pictures</div>
+                            <div class="photo-option-control">
+                                <button class="select-btn" id="selectExpressBtn">Select</button>
+                            </div>
+                        </div>
+                        <div class="photo-option" id="expressQuantityControl" style="display: none;">
+                            <div class="photo-option-label">Quantity</div>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" id="decreaseExpress">-</button>
+                                <div class="quantity-display" id="expressQuantity">0</div>
+                                <button class="quantity-btn" id="increaseExpress">+</button>
+                            </div>
+                            <div class="price-display" id="expressPrice">K0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3: Summary -->
+            <div class="step-content" id="step3">
+                <div class="summary-section">
+                    <div class="summary-title">Photography Order Summary</div>
+                    <div id="summaryItems">
+                        <div class="empty-message">No items selected</div>
+                    </div>
+                    <div class="grand-total-row">
+                        <div class="summary-label">Grand Total:</div>
+                        <div class="summary-value" id="totalPrice">K0</div>
+                    </div>
+                </div>
+                
+                <button class="add-service-btn" id="addServiceBtn">
+                    <i class="fas fa-plus"></i> Add Another Service
+                </button>
+                
+                <button class="send-quote-btn" id="sendQuoteBtn">
+                    <i class="fab fa-whatsapp"></i> Send Quote via WhatsApp
+                </button>
+            </div>
+        </div>
+        
+        <!-- Reels Service Page -->
+        <div class="reels-content" id="reelsContent">
+            <h1>Reels Service</h1>
+            <p class="subtitle">Choose the reel package that fits your needs</p>
+            
+            <div class="packages">
+                <div class="package" id="basicReel">
+                    <div class="package-header">
+                        <div class="package-title">Basic Reel</div>
+                        <div class="package-price">MWK 15,000</div>
+                    </div>
+                    <div class="package-details">
+                        <div class="package-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 10–15 seconds</span>
+                        </div>
+                        <div class="package-detail">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Delivery: 48 hours</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Clean, simple editing</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Basic color grading</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>One camera setup</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>One location</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Music sync</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>1 revision</span>
+                        </div>
+                    </div>
+                    <div class="package-best-for">
+                        Best for: quick content, outfit showcases, simple promo.
+                    </div>
+                    <div class="package-controls">
+                        <button class="select-btn" data-package="basic">Select</button>
+                    </div>
+                </div>
+                
+                <div class="package" id="standardReel">
+                    <div class="package-header">
+                        <div class="package-title">Standard Reel</div>
+                        <div class="package-price">MWK 25,000</div>
+                    </div>
+                    <div class="package-details">
+                        <div class="package-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 15–30 seconds</span>
+                        </div>
+                        <div class="package-detail">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Delivery: 24 hours</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Cinematic transitions</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Advanced color grading</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Two camera angles</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Creative direction</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Slow motion + speed ramping</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>2 revisions</span>
+                        </div>
+                    </div>
+                    <div class="package-best-for">
+                        Best for: brand content, storytelling, high-quality promos.
+                    </div>
+                    <div class="package-controls">
+                        <button class="select-btn" data-package="standard">Select</button>
+                    </div>
+                </div>
+                
+                <div class="package" id="premiumReel">
+                    <div class="package-header">
+                        <div class="package-title">Premium Cinematic Reel</div>
+                        <div class="package-price">MWK 50,000</div>
+                    </div>
+                    <div class="package-details">
+                        <div class="package-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 30–60 seconds</span>
+                        </div>
+                        <div class="package-detail">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Delivery: 12 hours (express)</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Full cinematic edit</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Multi-angle shooting</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Advanced transitions</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Motion graphics/text</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Color grading + sound design</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>3 revisions</span>
+                        </div>
+                        <div class="package-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Priority delivery</span>
+                        </div>
+                    </div>
+                    <div class="package-best-for">
+                        Best for: commercials, ads, artist content, emotional storytelling.
+                    </div>
+                    <div class="package-controls">
+                        <button class="select-btn" data-package="premium">Select</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Summary Section for Reels -->
+            <div class="summary-section" id="reelsSummary" style="display: none; margin-top: 30px;">
+                <div class="summary-title">Reels Order Summary</div>
+                <div id="reelsSummaryItems">
+                    <div class="empty-message">No items selected</div>
+                </div>
+                <div class="grand-total-row">
+                    <div class="summary-label">Grand Total:</div>
+                    <div class="summary-value" id="reelsTotalPrice">MWK 0</div>
+                </div>
+                
+                <button class="add-service-btn" id="addAnotherServiceReels">
+                    <i class="fas fa-plus"></i> Add Another Service
+                </button>
+                
+                <button class="send-quote-btn" id="sendQuoteReels">
+                    <i class="fab fa-whatsapp"></i> Send Quote via WhatsApp
+                </button>
+            </div>
+        </div>
+        
+        <!-- Portraits Service Page -->
+        <div class="portraits-content" id="portraitsContent">
+            <h1>Portraits (Canvas)</h1>
+            <p class="subtitle">Choose the canvas size for your portrait</p>
+            
+            <div class="portrait-sizes">
+                <div class="portrait-size" id="a3Size">
+                    <div class="portrait-image">
+                        <img src="https://i.ibb.co/Qvz8Z35h/IMG-9619.jpg" alt="A3 Portrait">
+                    </div>
+                    <div class="portrait-info">
+                        <div class="portrait-title">A3</div>
+                        <div class="portrait-dimensions">30cm x 45cm</div>
+                        <div class="portrait-price">K20,000</div>
+                        <div class="portrait-controls">
+                            <button class="portrait-select-btn" data-size="a3">Select</button>
+                            <div class="portrait-quantity-control" id="a3QuantityControl">
+                                <button class="quantity-btn decrease-portrait" data-size="a3">-</button>
+                                <div class="quantity-display" id="a3Quantity">0</div>
+                                <button class="quantity-btn increase-portrait" data-size="a3">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portrait-size" id="a2Size">
+                    <div class="portrait-image">
+                        <img src="https://i.ibb.co/C5R0NNNf/IMG-0255.jpg" alt="A2 Portrait">
+                    </div>
+                    <div class="portrait-info">
+                        <div class="portrait-title">A2</div>
+                        <div class="portrait-dimensions">45cm x 60cm</div>
+                        <div class="portrait-price">K25,000</div>
+                        <div class="portrait-controls">
+                            <button class="portrait-select-btn" data-size="a2">Select</button>
+                            <div class="portrait-quantity-control" id="a2QuantityControl">
+                                <button class="quantity-btn decrease-portrait" data-size="a2">-</button>
+                                <div class="quantity-display" id="a2Quantity">0</div>
+                                <button class="quantity-btn increase-portrait" data-size="a2">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portrait-size" id="a1Size">
+                    <div class="portrait-image">
+                        <img src="https://i.ibb.co/SXVCKbyw/2024-12-11-17-43-IMG-2626.jpg" alt="A1 Portrait">
+                    </div>
+                    <div class="portrait-info">
+                        <div class="portrait-title">A1</div>
+                        <div class="portrait-dimensions">60cm x 90cm</div>
+                        <div class="portrait-price">K35,000</div>
+                        <div class="portrait-controls">
+                            <button class="portrait-select-btn" data-size="a1">Select</button>
+                            <div class="portrait-quantity-control" id="a1QuantityControl">
+                                <button class="quantity-btn decrease-portrait" data-size="a1">-</button>
+                                <div class="quantity-display" id="a1Quantity">0</div>
+                                <button class="quantity-btn increase-portrait" data-size="a1">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portrait-size" id="a0Size">
+                    <div class="portrait-image">
+                        <img src="https://i.ibb.co/RpbJzms8/IMG-20250908-104932.jpg" alt="A0 Portrait">
+                    </div>
+                    <div class="portrait-info">
+                        <div class="portrait-title">A0</div>
+                        <div class="portrait-dimensions">90cm x 120cm</div>
+                        <div class="portrait-price">K65,000</div>
+                        <div class="portrait-controls">
+                            <button class="portrait-select-btn" data-size="a0">Select</button>
+                            <div class="portrait-quantity-control" id="a0QuantityControl">
+                                <button class="quantity-btn decrease-portrait" data-size="a0">-</button>
+                                <div class="quantity-display" id="a0Quantity">0</div>
+                                <button class="quantity-btn increase-portrait" data-size="a0">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Summary Section for Portraits -->
+            <div class="summary-section" id="portraitsSummary" style="display: none; margin-top: 30px;">
+                <div class="summary-title">Portraits Order Summary</div>
+                <div id="portraitsSummaryItems">
+                    <div class="empty-message">No items selected</div>
+                </div>
+                <div class="grand-total-row">
+                    <div class="summary-label">Grand Total:</div>
+                    <div class="summary-value" id="portraitsTotalPrice">K0</div>
+                </div>
+                
+                <button class="add-service-btn" id="addAnotherServicePortraits">
+                    <i class="fas fa-plus"></i> Add Another Service
+                </button>
+                
+                <button class="send-quote-btn" id="sendQuotePortraits">
+                    <i class="fab fa-whatsapp"></i> Send Quote via WhatsApp
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Eran Studio © 2023
+        </div>
+    </div>
+    
+    <!-- Fixed Navigation Bar -->
+    <div class="fixed-nav" id="fixedNav" style="display: none;">
+        <div class="nav-total" id="navTotal">Grand Total: K0</div>
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prevBtn" style="display: none;">
+                Back
+            </button>
+            <button class="nav-btn" id="nextBtn">
+                Next
+            </button>
+            <button class="nav-btn" id="viewSummaryBtn" style="display: none;">
+                View Summary
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Navigation Elements
+        const welcomeContent = document.getElementById('welcomeContent');
+        const servicesContent = document.getElementById('servicesContent');
+        const aboutContent = document.getElementById('aboutContent');
+        const photographyContent = document.getElementById('photographyContent');
+        const reelsContent = document.getElementById('reelsContent');
+        const portraitsContent = document.getElementById('portraitsContent');
+        const viewServicesBtn = document.getElementById('viewServicesBtn');
+        const backBtn = document.getElementById('backBtn');
+        const aboutFeature = document.getElementById('aboutFeature');
+        const backFromAboutBtn = document.getElementById('backFromAboutBtn');
+        
+        // Service Navigation
+        const photographyService = document.getElementById('photographyService');
+        const reelsService = document.getElementById('reelsService');
+        const portraitsService = document.getElementById('portraitsService');
+        
+        // Photography Booking Elements
+        const normalQuantity = document.getElementById('normalQuantity');
+        const expressQuantity = document.getElementById('expressQuantity');
+        const normalPrice = document.getElementById('normalPrice');
+        const expressPrice = document.getElementById('expressPrice');
+        const totalPrice = document.getElementById('totalPrice');
+        const summaryItems = document.getElementById('summaryItems');
+        const addServiceBtn = document.getElementById('addServiceBtn');
+        const sendQuoteBtn = document.getElementById('sendQuoteBtn');
+        
+        // New Photography Select Buttons
+        const selectNormalBtn = document.getElementById('selectNormalBtn');
+        const selectExpressBtn = document.getElementById('selectExpressBtn');
+        const normalQuantityControl = document.getElementById('normalQuantityControl');
+        const expressQuantityControl = document.getElementById('expressQuantityControl');
+        
+        // Quantity buttons
+        const decreaseNormal = document.getElementById('decreaseNormal');
+        const increaseNormal = document.getElementById('increaseNormal');
+        const decreaseExpress = document.getElementById('decreaseExpress');
+        const increaseExpress = document.getElementById('increaseExpress');
+        
+        // Express selection cards
+        const expressCards = document.querySelectorAll('.selection-card[data-express]');
+        
+        // Step Navigation
+        const steps = document.querySelectorAll('.step');
+        const stepContents = document.querySelectorAll('.step-content');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const viewSummaryBtn = document.getElementById('viewSummaryBtn');
+        const fixedNav = document.getElementById('fixedNav');
+        const navTotal = document.getElementById('navTotal');
+        
+        // Swipe Elements
+        const swipeContainer = document.getElementById('swipeContainer');
+        const swipeWrapper = document.getElementById('swipeWrapper');
+        const swipeDots = document.querySelectorAll('.swipe-dot');
+        
+        // Reels Elements
+        const reelsSummary = document.getElementById('reelsSummary');
+        const reelsSummaryItems = document.getElementById('reelsSummaryItems');
+        const reelsTotalPrice = document.getElementById('reelsTotalPrice');
+        const addAnotherServiceReels = document.getElementById('addAnotherServiceReels');
+        const sendQuoteReels = document.getElementById('sendQuoteReels');
+        
+        // Portraits Elements
+        const portraitsSummary = document.getElementById('portraitsSummary');
+        const portraitsSummaryItems = document.getElementById('portraitsSummaryItems');
+        const portraitsTotalPrice = document.getElementById('portraitsTotalPrice');
+        const addAnotherServicePortraits = document.getElementById('addAnotherServicePortraits');
+        const sendQuotePortraits = document.getElementById('sendQuotePortraits');
+        
+        // Overall Summary Elements
+        const viewSummaryServices = document.getElementById('viewSummaryServices');
+        const overallSummary = document.getElementById('overallSummary');
+        const overallSummaryContent = document.getElementById('overallSummaryContent');
+        const overallGrandTotal = document.getElementById('overallGrandTotal');
+        const sendOverallQuote = document.getElementById('sendOverallQuote');
+        
+        // Track selected services
+        let selectedServices = [];
+        
+        // Track completed orders (for selection effect)
+        let completedOrders = [];
+        
+        // Photography Booking State
+        let photographyState = {
+            currentStep: 1,
+            peopleCount: '1-2', // Default to first slide
+            normalSelected: false,
+            normalPictures: 0,
+            expressSelected: false,
+            expressPictures: 0,
+            expressType: 'none',
+            sessionPackage: null
+        };
+        
+        // Photography Pricing
+        const photographyPricing = {
+            '1-2': 2000,
+            '3-7': 3000
+        };
+        
+        // Express Pricing
+        const expressPricing = {
+            '24hrs': 3000,
+            '12hrs': 4500,
+            '6hrs': 6000,
+            'none': 0
+        };
+        
+        // Reels state
+        let reelsState = {
+            basic: { selected: false, price: 15000 },
+            standard: { selected: false, price: 25000 },
+            premium: { selected: false, price: 50000 }
+        };
+        
+        // Portraits state
+        let portraitsState = {
+            a3: { selected: false, quantity: 0, price: 20000 },
+            a2: { selected: false, quantity: 0, price: 25000 },
+            a1: { selected: false, quantity: 0, price: 35000 },
+            a0: { selected: false, quantity: 0, price: 65000 }
+        };
+        
+        // Swipe Variables
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let currentIndex = 0;
+        let isDragging = false;
+        
+        // Navigation Event Listeners
+        viewServicesBtn.addEventListener('click', function() {
+            welcomeContent.style.display = 'none';
+            servicesContent.style.display = 'block';
+            backBtn.style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+        
+        backBtn.addEventListener('click', function() {
+            if (photographyContent.style.display === 'block') {
+                // If in photography booking, go back to previous step or services
+                if (photographyState.currentStep > 1) {
+                    // Go to previous step
+                    photographyState.currentStep--;
+                    updateStepDisplay();
+                } else {
+                    // Go back to services
+                    photographyContent.style.display = 'none';
+                    fixedNav.style.display = 'none';
+                    servicesContent.style.display = 'block';
+                    // Only mark as selected if user completed the order
+                    if (completedOrders.includes('photography')) {
+                        markServiceAsSelected('photography');
+                    }
+                }
+            } else if (reelsContent.style.display === 'block') {
+                // If in reels, go back to services
+                reelsContent.style.display = 'none';
+                fixedNav.style.display = 'none';
+                servicesContent.style.display = 'block';
+                // Only mark as selected if user completed the order
+                if (completedOrders.includes('reels')) {
+                    markServiceAsSelected('reels');
+                }
+            } else if (portraitsContent.style.display === 'block') {
+                // If in portraits, go back to services
+                portraitsContent.style.display = 'none';
+                fixedNav.style.display = 'none';
+                servicesContent.style.display = 'block';
+                // Only mark as selected if user completed the order
+                if (completedOrders.includes('portraits')) {
+                    markServiceAsSelected('portraits');
+                }
+            } else if (servicesContent.style.display === 'block') {
+                // If in services, go back to welcome
+                servicesContent.style.display = 'none';
+                welcomeContent.style.display = 'block';
+                backBtn.style.display = 'none';
+            } else if (aboutContent.style.display === 'block') {
+                // If in about, go back to welcome
+                aboutContent.style.display = 'none';
+                welcomeContent.style.display = 'block';
+                backBtn.style.display = 'none';
+            }
+            
+            // Update view summary button visibility
+            updateViewSummaryButton();
+        });
+        
+        aboutFeature.addEventListener('click', function() {
+            welcomeContent.style.display = 'none';
+            aboutContent.style.display = 'block';
+            backBtn.style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+        
+        backFromAboutBtn.addEventListener('click', function() {
+            aboutContent.style.display = 'none';
+            welcomeContent.style.display = 'block';
+            backBtn.style.display = 'none';
+        });
+        
+        // Service Click Functionality
+        photographyService.addEventListener('click', function() {
+            servicesContent.style.display = 'none';
+            photographyContent.style.display = 'block';
+            backBtn.style.display = 'block';
+            fixedNav.style.display = 'flex';
+            window.scrollTo(0, 0);
+            // Don't reset photography booking state when revisiting
+            updatePhotographyDisplay();
+            updateStepDisplay();
+        });
+        
+        reelsService.addEventListener('click', function() {
+            servicesContent.style.display = 'none';
+            reelsContent.style.display = 'block';
+            backBtn.style.display = 'block';
+            fixedNav.style.display = 'flex';
+            window.scrollTo(0, 0);
+            // Don't reset reels selection when revisiting
+            updateReelsDisplay();
+        });
+        
+        portraitsService.addEventListener('click', function() {
+            servicesContent.style.display = 'none';
+            portraitsContent.style.display = 'block';
+            backBtn.style.display = 'block';
+            fixedNav.style.display = 'flex';
+            window.scrollTo(0, 0);
+            updatePortraitsTotal();
+        });
+        
+        // Photography Booking Event Listeners
+        selectNormalBtn.addEventListener('click', function() {
+            photographyState.normalSelected = !photographyState.normalSelected;
+            
+            if (photographyState.normalSelected) {
+                this.classList.add('selected');
+                this.textContent = 'Selected';
+                normalQuantityControl.style.display = 'flex';
+                // Set initial quantity to 1
+                photographyState.normalPictures = 1;
+            } else {
+                this.classList.remove('selected');
+                this.textContent = 'Select';
+                normalQuantityControl.style.display = 'none';
+                // Reset quantity to 0
+                photographyState.normalPictures = 0;
+            }
+            
+            updatePhotographyDisplay();
+        });
+        
+        selectExpressBtn.addEventListener('click', function() {
+            photographyState.expressSelected = !photographyState.expressSelected;
+            
+            if (photographyState.expressSelected) {
+                this.classList.add('selected');
+                this.textContent = 'Selected';
+                expressQuantityControl.style.display = 'flex';
+                // Set initial quantity to 1
+                photographyState.expressPictures = 1;
+            } else {
+                this.classList.remove('selected');
+                this.textContent = 'Select';
+                expressQuantityControl.style.display = 'none';
+                // Reset quantity to 0
+                photographyState.expressPictures = 0;
+            }
+            
+            updatePhotographyDisplay();
+        });
+        
+        decreaseNormal.addEventListener('click', function() {
+            if (photographyState.normalPictures > 0) {
+                photographyState.normalPictures--;
+                updatePhotographyDisplay();
+            }
+        });
+        
+        increaseNormal.addEventListener('click', function() {
+            photographyState.normalPictures++;
+            updatePhotographyDisplay();
+        });
+        
+        decreaseExpress.addEventListener('click', function() {
+            if (photographyState.expressPictures > 0) {
+                photographyState.expressPictures--;
+                updatePhotographyDisplay();
+            }
+        });
+        
+        increaseExpress.addEventListener('click', function() {
+            photographyState.expressPictures++;
+            updatePhotographyDisplay();
+        });
+        
+        // Express card selection
+        expressCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove active class from all cards
+                expressCards.forEach(c => c.classList.remove('active'));
+                // Add active class to clicked card
+                this.classList.add('active');
+                
+                // Update express type
+                photographyState.expressType = this.getAttribute('data-express');
+                updatePhotographyDisplay();
+            });
+        });
+        
+        // Step Navigation
+        nextBtn.addEventListener('click', function() {
+            if (photographyState.currentStep < 3) {
+                photographyState.currentStep++;
+                updateStepDisplay();
+            }
+        });
+        
+        prevBtn.addEventListener('click', function() {
+            if (photographyState.currentStep > 1) {
+                photographyState.currentStep--;
+                updateStepDisplay();
+            }
+        });
+        
+        viewSummaryBtn.addEventListener('click', function() {
+            photographyState.currentStep = 3;
+            updateStepDisplay();
+        });
+        
+        // Updated "Add Another Service" button to go to services page
+        addServiceBtn.addEventListener('click', function() {
+            // Mark photography as selected (completed order)
+            completedOrders.push('photography');
+            markServiceAsSelected('photography');
+            // Go to services page
+            photographyContent.style.display = 'none';
+            fixedNav.style.display = 'none';
+            servicesContent.style.display = 'block';
+            // Update view summary button visibility
+            updateViewSummaryButton();
+        });
+        
+        // Send Quote buttons
+        sendQuoteBtn.addEventListener('click', function() {
+            sendToWhatsApp();
+        });
+        
+        // Reels functionality
+        document.querySelectorAll('.select-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const package = this.getAttribute('data-package');
+                
+                // Toggle selection
+                reelsState[package].selected = !reelsState[package].selected;
+                
+                // Update button appearance
+                if (reelsState[package].selected) {
+                    this.classList.add('selected');
+                    this.textContent = 'Selected';
+                } else {
+                    this.classList.remove('selected');
+                    this.textContent = 'Select';
+                }
+                
+                // Show summary if any package is selected
+                const hasSelected = Object.values(reelsState).some(pkg => pkg.selected);
+                if (hasSelected) {
+                    reelsSummary.style.display = 'block';
+                    updateReelsSummary();
+                    // Show View Summary button in navigation
+                    viewSummaryBtn.style.display = 'inline-flex';
+                    nextBtn.style.display = 'none';
+                } else {
+                    reelsSummary.style.display = 'none';
+                    // Hide View Summary button in navigation
+                    viewSummaryBtn.style.display = 'none';
+                    nextBtn.style.display = 'inline-flex';
+                }
+            });
+        });
+        
+        function updateReelsDisplay() {
+            // Update button appearance based on current state
+            document.querySelectorAll('.select-btn').forEach(btn => {
+                const package = btn.getAttribute('data-package');
+                if (reelsState[package].selected) {
+                    btn.classList.add('selected');
+                    btn.textContent = 'Selected';
+                } else {
+                    btn.classList.remove('selected');
+                    btn.textContent = 'Select';
+                }
+            });
+            
+            // Show summary if any package is selected
+            const hasSelected = Object.values(reelsState).some(pkg => pkg.selected);
+            if (hasSelected) {
+                reelsSummary.style.display = 'block';
+                updateReelsSummary();
+                // Show View Summary button in navigation
+                viewSummaryBtn.style.display = 'inline-flex';
+                nextBtn.style.display = 'none';
+            } else {
+                reelsSummary.style.display = 'none';
+                // Hide View Summary button in navigation
+                viewSummaryBtn.style.display = 'none';
+                nextBtn.style.display = 'inline-flex';
+            }
+        }
+        
+        function updateReelsSummary() {
+            let items = [];
+            let total = 0;
+            
+            // Basic Reel
+            if (reelsState.basic.selected) {
+                items.push({
+                    label: 'Basic Reel',
+                    value: `MWK ${reelsState.basic.price.toLocaleString()}`
+                });
+                total += reelsState.basic.price;
+            }
+            
+            // Standard Reel
+            if (reelsState.standard.selected) {
+                items.push({
+                    label: 'Standard Reel',
+                    value: `MWK ${reelsState.standard.price.toLocaleString()}`
+                });
+                total += reelsState.standard.price;
+            }
+            
+            // Premium Reel
+            if (reelsState.premium.selected) {
+                items.push({
+                    label: 'Premium Reel',
+                    value: `MWK ${reelsState.premium.price.toLocaleString()}`
+                });
+                total += reelsState.premium.price;
+            }
+            
+            // Update summary display
+            if (items.length === 0) {
+                reelsSummaryItems.innerHTML = '<div class="empty-message">No items selected</div>';
+            } else {
+                reelsSummaryItems.innerHTML = items.map(item => `
+                    <div class="summary-item">
+                        <div class="summary-label">${item.label}</div>
+                        <div class="summary-value">${item.value}</div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update total
+            reelsTotalPrice.textContent = `MWK ${total.toLocaleString()}`;
+            navTotal.textContent = `Grand Total: MWK ${total.toLocaleString()}`;
+        }
+        
+        addAnotherServiceReels.addEventListener('click', function() {
+            // Mark reels as selected (completed order)
+            completedOrders.push('reels');
+            markServiceAsSelected('reels');
+            // Go to services page
+            reelsContent.style.display = 'none';
+            fixedNav.style.display = 'none';
+            servicesContent.style.display = 'block';
+            // Update view summary button visibility
+            updateViewSummaryButton();
+        });
+        
+        sendQuoteReels.addEventListener('click', function() {
+            sendReelsToWhatsApp();
+        });
+        
+        // Portraits functionality
+        document.querySelectorAll('.portrait-select-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const size = this.getAttribute('data-size');
+                
+                // Toggle selection
+                portraitsState[size].selected = !portraitsState[size].selected;
+                
+                // Update button appearance
+                if (portraitsState[size].selected) {
+                    this.classList.add('selected');
+                    this.textContent = 'Selected';
+                    // Show quantity controls
+                    document.getElementById(`${size}QuantityControl`).classList.add('active');
+                    // Set initial quantity to 1
+                    portraitsState[size].quantity = 1;
+                } else {
+                    this.classList.remove('selected');
+                    this.textContent = 'Select';
+                    // Hide quantity controls
+                    document.getElementById(`${size}QuantityControl`).classList.remove('active');
+                    // Reset quantity to 0
+                    portraitsState[size].quantity = 0;
+                }
+                
+                updatePortraitsDisplay();
+                updatePortraitsTotal();
+                
+                // Show summary if any portrait is selected
+                const hasSelected = Object.values(portraitsState).some(pkg => pkg.selected);
+                if (hasSelected) {
+                    portraitsSummary.style.display = 'block';
+                    updatePortraitsSummary();
+                    // Show View Summary button in navigation
+                    viewSummaryBtn.style.display = 'inline-flex';
+                    nextBtn.style.display = 'none';
+                } else {
+                    portraitsSummary.style.display = 'none';
+                    // Hide View Summary button in navigation
+                    viewSummaryBtn.style.display = 'none';
+                    nextBtn.style.display = 'inline-flex';
+                }
+            });
+        });
+        
+        document.querySelectorAll('.increase-portrait').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const size = this.getAttribute('data-size');
+                portraitsState[size].quantity++;
+                updatePortraitsDisplay();
+                updatePortraitsTotal();
+                updatePortraitsSummary();
+            });
+        });
+        
+        document.querySelectorAll('.decrease-portrait').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const size = this.getAttribute('data-size');
+                if (portraitsState[size].quantity > 0) {
+                    portraitsState[size].quantity--;
+                    updatePortraitsDisplay();
+                    updatePortraitsTotal();
+                    updatePortraitsSummary();
+                }
+            });
+        });
+        
+        function updatePortraitsDisplay() {
+            document.getElementById('a3Quantity').textContent = portraitsState.a3.quantity;
+            document.getElementById('a2Quantity').textContent = portraitsState.a2.quantity;
+            document.getElementById('a1Quantity').textContent = portraitsState.a1.quantity;
+            document.getElementById('a0Quantity').textContent = portraitsState.a0.quantity;
+        }
+        
+        function updatePortraitsTotal() {
+            let total = 0;
+            total += portraitsState.a3.quantity * portraitsState.a3.price;
+            total += portraitsState.a2.quantity * portraitsState.a2.price;
+            total += portraitsState.a1.quantity * portraitsState.a1.price;
+            total += portraitsState.a0.quantity * portraitsState.a0.price;
+            
+            navTotal.textContent = `Grand Total: K ${total.toLocaleString()}`;
+        }
+        
+        function updatePortraitsSummary() {
+            let items = [];
+            let total = 0;
+            
+            // A3
+            if (portraitsState.a3.selected && portraitsState.a3.quantity > 0) {
+                const a3Total = portraitsState.a3.quantity * portraitsState.a3.price;
+                items.push({
+                    label: `${portraitsState.a3.quantity} A3 Canvas`,
+                    value: `K ${a3Total.toLocaleString()}`
+                });
+                total += a3Total;
+            }
+            
+            // A2
+            if (portraitsState.a2.selected && portraitsState.a2.quantity > 0) {
+                const a2Total = portraitsState.a2.quantity * portraitsState.a2.price;
+                items.push({
+                    label: `${portraitsState.a2.quantity} A2 Canvas`,
+                    value: `K ${a2Total.toLocaleString()}`
+                });
+                total += a2Total;
+            }
+            
+            // A1
+            if (portraitsState.a1.selected && portraitsState.a1.quantity > 0) {
+                const a1Total = portraitsState.a1.quantity * portraitsState.a1.price;
+                items.push({
+                    label: `${portraitsState.a1.quantity} A1 Canvas`,
+                    value: `K ${a1Total.toLocaleString()}`
+                });
+                total += a1Total;
+            }
+            
+            // A0
+            if (portraitsState.a0.selected && portraitsState.a0.quantity > 0) {
+                const a0Total = portraitsState.a0.quantity * portraitsState.a0.price;
+                items.push({
+                    label: `${portraitsState.a0.quantity} A0 Canvas`,
+                    value: `K ${a0Total.toLocaleString()}`
+                });
+                total += a0Total;
+            }
+            
+            // Update summary display
+            if (items.length === 0) {
+                portraitsSummaryItems.innerHTML = '<div class="empty-message">No items selected</div>';
+            } else {
+                portraitsSummaryItems.innerHTML = items.map(item => `
+                    <div class="summary-item">
+                        <div class="summary-label">${item.label}</div>
+                        <div class="summary-value">${item.value}</div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update total
+            portraitsTotalPrice.textContent = `K ${total.toLocaleString()}`;
+        }
+        
+        addAnotherServicePortraits.addEventListener('click', function() {
+            // Mark portraits as selected (completed order)
+            completedOrders.push('portraits');
+            markServiceAsSelected('portraits');
+            // Go to services page
+            portraitsContent.style.display = 'none';
+            fixedNav.style.display = 'none';
+            servicesContent.style.display = 'block';
+            // Update view summary button visibility
+            updateViewSummaryButton();
+        });
+        
+        sendQuotePortraits.addEventListener('click', function() {
+            sendPortraitsToWhatsApp();
+        });
+        
+        // View Summary button on services page
+        viewSummaryServices.addEventListener('click', function() {
+            overallSummary.classList.toggle('active');
+            updateOverallSummary();
+        });
+        
+        sendOverallQuote.addEventListener('click', function() {
+            sendOverallToWhatsApp();
+        });
+        
+        // Swipe Event Listeners
+        swipeContainer.addEventListener('touchstart', touchStart);
+        swipeContainer.addEventListener('touchmove', touchMove);
+        swipeContainer.addEventListener('touchend', touchEnd);
+        
+        swipeContainer.addEventListener('mousedown', touchStart);
+        swipeContainer.addEventListener('mousemove', touchMove);
+        swipeContainer.addEventListener('mouseup', touchEnd);
+        swipeContainer.addEventListener('mouseleave', touchEnd);
+        
+        // Swipe dot navigation
+        swipeDots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const slideIndex = parseInt(this.getAttribute('data-slide'));
+                goToSlide(slideIndex);
+            });
+        });
+        
+        // Function to mark a service as selected with enhanced gray scale effect
+        function markServiceAsSelected(serviceId) {
+            // Add to selected services if not already there
+            if (!selectedServices.includes(serviceId)) {
+                selectedServices.push(serviceId);
+            }
+            
+            // Apply enhanced gray scale effect to selected services
+            document.querySelectorAll('.service').forEach(service => {
+                const id = service.id.replace('Service', '');
+                if (selectedServices.includes(id)) {
+                    service.classList.add('selected');
+                }
+            });
+            
+            // Update view summary button visibility
+            updateViewSummaryButton();
+        }
+        
+        // Update view summary button visibility
+        function updateViewSummaryButton() {
+            if (selectedServices.length > 0) {
+                viewSummaryServices.style.display = 'block';
+            } else {
+                viewSummaryServices.style.display = 'none';
+                overallSummary.classList.remove('active');
+            }
+        }
+        
+        // Update overall summary
+        function updateOverallSummary() {
+            let content = '';
+            let grandTotal = 0;
+            
+            // Photography section
+            if (selectedServices.includes('photography')) {
+                const photographyTotal = calculatePhotographyTotal();
+                if (photographyTotal > 0) {
+                    content += `
+                        <div class="overall-summary-section">
+                            <div class="overall-summary-section-title">
+                                <i class="fas fa-camera"></i>
+                                Photography
+                            </div>
+                    `;
+                    
+                    const basePrice = photographyPricing[photographyState.peopleCount];
+                    
+                    // People count
+                    content += `
+                        <div class="overall-summary-item">
+                            <div class="overall-summary-label">${photographyState.peopleCount} People</div>
+                            <div class="overall-summary-value">K${basePrice}/pic</div>
+                        </div>
+                    `;
+                    
+                    // Normal pictures
+                    if (photographyState.normalSelected && photographyState.normalPictures > 0) {
+                        const normalTotal = photographyState.normalPictures * basePrice;
+                        content += `
+                            <div class="overall-summary-item">
+                                <div class="overall-summary-label">${photographyState.normalPictures} Normal Pictures</div>
+                                <div class="overall-summary-value">K${normalTotal.toLocaleString()}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    // Express pictures
+                    if (photographyState.expressSelected && photographyState.expressType !== 'none' && photographyState.expressPictures > 0) {
+                        const expressPricePerPic = expressPricing[photographyState.expressType];
+                        const expressTotal = photographyState.expressPictures * (basePrice + expressPricePerPic);
+                        content += `
+                            <div class="overall-summary-item">
+                                <div class="overall-summary-label">${photographyState.expressPictures} ${photographyState.expressType} Express</div>
+                                <div class="overall-summary-value">K${expressTotal.toLocaleString()}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    content += `
+                            <div class="overall-summary-item" style="font-weight: 600;">
+                                <div class="overall-summary-label">Subtotal</div>
+                                <div class="overall-summary-value">K${photographyTotal.toLocaleString()}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    grandTotal += photographyTotal;
+                }
+            }
+            
+            // Reels section
+            if (selectedServices.includes('reels')) {
+                let reelsTotal = 0;
+                let reelsItems = [];
+                
+                // Basic Reel
+                if (reelsState.basic.selected) {
+                    reelsItems.push({
+                        label: 'Basic Reel',
+                        value: `MWK ${reelsState.basic.price.toLocaleString()}`
+                    });
+                    reelsTotal += reelsState.basic.price;
+                }
+                
+                // Standard Reel
+                if (reelsState.standard.selected) {
+                    reelsItems.push({
+                        label: 'Standard Reel',
+                        value: `MWK ${reelsState.standard.price.toLocaleString()}`
+                    });
+                    reelsTotal += reelsState.standard.price;
+                }
+                
+                // Premium Reel
+                if (reelsState.premium.selected) {
+                    reelsItems.push({
+                        label: 'Premium Reel',
+                        value: `MWK ${reelsState.premium.price.toLocaleString()}`
+                    });
+                    reelsTotal += reelsState.premium.price;
+                }
+                
+                if (reelsTotal > 0) {
+                    content += `
+                        <div class="overall-summary-section">
+                            <div class="overall-summary-section-title">
+                                <i class="fas fa-film"></i>
+                                Reels
+                            </div>
+                    `;
+                    
+                    reelsItems.forEach(item => {
+                        content += `
+                            <div class="overall-summary-item">
+                                <div class="overall-summary-label">${item.label}</div>
+                                <div class="overall-summary-value">${item.value}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    content += `
+                            <div class="overall-summary-item" style="font-weight: 600;">
+                                <div class="overall-summary-label">Subtotal</div>
+                                <div class="overall-summary-value">MWK ${reelsTotal.toLocaleString()}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    grandTotal += reelsTotal;
+                }
+            }
+            
+            // Portraits section
+            if (selectedServices.includes('portraits')) {
+                let portraitsTotal = 0;
+                let portraitsItems = [];
+                
+                // A3
+                if (portraitsState.a3.selected && portraitsState.a3.quantity > 0) {
+                    const a3Total = portraitsState.a3.quantity * portraitsState.a3.price;
+                    portraitsItems.push({
+                        label: `${portraitsState.a3.quantity} A3 Canvas`,
+                        value: `K ${a3Total.toLocaleString()}`
+                    });
+                    portraitsTotal += a3Total;
+                }
+                
+                // A2
+                if (portraitsState.a2.selected && portraitsState.a2.quantity > 0) {
+                    const a2Total = portraitsState.a2.quantity * portraitsState.a2.price;
+                    portraitsItems.push({
+                        label: `${portraitsState.a2.quantity} A2 Canvas`,
+                        value: `K ${a2Total.toLocaleString()}`
+                    });
+                    portraitsTotal += a2Total;
+                }
+                
+                // A1
+                if (portraitsState.a1.selected && portraitsState.a1.quantity > 0) {
+                    const a1Total = portraitsState.a1.quantity * portraitsState.a1.price;
+                    portraitsItems.push({
+                        label: `${portraitsState.a1.quantity} A1 Canvas`,
+                        value: `K ${a1Total.toLocaleString()}`
+                    });
+                    portraitsTotal += a1Total;
+                }
+                
+                // A0
+                if (portraitsState.a0.selected && portraitsState.a0.quantity > 0) {
+                    const a0Total = portraitsState.a0.quantity * portraitsState.a0.price;
+                    portraitsItems.push({
+                        label: `${portraitsState.a0.quantity} A0 Canvas`,
+                        value: `K ${a0Total.toLocaleString()}`
+                    });
+                    portraitsTotal += a0Total;
+                }
+                
+                if (portraitsTotal > 0) {
+                    content += `
+                        <div class="overall-summary-section">
+                            <div class="overall-summary-section-title">
+                                <i class="fas fa-palette"></i>
+                                Portraits
+                            </div>
+                    `;
+                    
+                    portraitsItems.forEach(item => {
+                        content += `
+                            <div class="overall-summary-item">
+                                <div class="overall-summary-label">${item.label}</div>
+                                <div class="overall-summary-value">${item.value}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    content += `
+                            <div class="overall-summary-item" style="font-weight: 600;">
+                                <div class="overall-summary-label">Subtotal</div>
+                                <div class="overall-summary-value">K ${portraitsTotal.toLocaleString()}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    grandTotal += portraitsTotal;
+                }
+            }
+            
+            // Update overall summary content
+            if (content === '') {
+                overallSummaryContent.innerHTML = '<div class="empty-message">No services selected yet</div>';
+            } else {
+                overallSummaryContent.innerHTML = content;
+            }
+            
+            // Update grand total
+            overallGrandTotal.textContent = `K ${grandTotal.toLocaleString()}`;
+        }
+        
+        // Reset functions
+        function resetPhotographyBooking() {
+            photographyState = {
+                currentStep: 1,
+                peopleCount: '1-2',
+                normalSelected: false,
+                normalPictures: 0,
+                expressSelected: false,
+                expressPictures: 0,
+                expressType: 'none',
+                sessionPackage: null
+            };
+            
+            // Reset form elements
+            expressCards.forEach(card => card.classList.remove('active'));
+            // Set "No Express" as active by default
+            document.querySelector('.selection-card[data-express="none"]').classList.add('active');
+            
+            // Reset select buttons
+            selectNormalBtn.classList.remove('selected');
+            selectNormalBtn.textContent = 'Select';
+            normalQuantityControl.style.display = 'none';
+            
+            selectExpressBtn.classList.remove('selected');
+            selectExpressBtn.textContent = 'Select';
+            expressQuantityControl.style.display = 'none';
+            
+            // Reset swipe to first slide
+            goToSlide(0);
+            
+            updatePhotographyDisplay();
+            updateStepDisplay();
+        }
+        
+        function resetReelsSelection() {
+            reelsState = {
+                basic: { selected: false, price: 15000 },
+                standard: { selected: false, price: 25000 },
+                premium: { selected: false, price: 50000 }
+            };
+            
+            // Reset button appearance
+            document.querySelectorAll('.select-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                btn.textContent = 'Select';
+            });
+            
+            reelsSummary.style.display = 'none';
+            viewSummaryBtn.style.display = 'none';
+            nextBtn.style.display = 'inline-flex';
+        }
+        
+        // Photography Booking Functions
+        function updatePhotographyDisplay() {
+            // Update quantity displays
+            normalQuantity.textContent = photographyState.normalPictures;
+            expressQuantity.textContent = photographyState.expressPictures;
+            
+            // Update prices
+            updatePhotographyPrices();
+            
+            // Update summary
+            updatePhotographySummary();
+            
+            // Update nav total
+            updateNavTotal();
+        }
+        
+        function updatePhotographyPrices() {
+            const basePrice = photographyPricing[photographyState.peopleCount];
+            const normalTotal = photographyState.normalPictures * basePrice;
+            normalPrice.textContent = `K${normalTotal.toLocaleString()}`;
+            
+            let expressTotal = 0;
+            if (photographyState.expressSelected && photographyState.expressType !== 'none' && photographyState.expressPictures > 0) {
+                const expressPricePerPic = expressPricing[photographyState.expressType];
+                expressTotal = photographyState.expressPictures * (basePrice + expressPricePerPic);
+            }
+            expressPrice.textContent = `K${expressTotal.toLocaleString()}`;
+        }
+        
+        function updatePhotographySummary() {
+            const basePrice = photographyPricing[photographyState.peopleCount];
+            let items = [];
+            let total = 0;
+            
+            // People count
+            items.push({
+                label: `${photographyState.peopleCount} People`,
+                value: `K${basePrice}/pic`
+            });
+            
+            // Normal pictures
+            if (photographyState.normalSelected && photographyState.normalPictures > 0) {
+                const normalTotal = photographyState.normalPictures * basePrice;
+                items.push({
+                    label: `${photographyState.normalPictures} Normal Pictures`,
+                    value: `K${normalTotal.toLocaleString()}`
+                });
+                total += normalTotal;
+            }
+            
+            // Express pictures
+            if (photographyState.expressSelected && photographyState.expressType !== 'none' && photographyState.expressPictures > 0) {
+                const expressPricePerPic = expressPricing[photographyState.expressType];
+                const expressTotal = photographyState.expressPictures * (basePrice + expressPricePerPic);
+                items.push({
+                    label: `${photographyState.expressPictures} ${photographyState.expressType} Express`,
+                    value: `K${expressTotal.toLocaleString()}`
+                });
+                total += expressTotal;
+            }
+            
+            // Update summary display
+            if (items.length === 0) {
+                summaryItems.innerHTML = '<div class="empty-message">No items selected</div>';
+            } else {
+                summaryItems.innerHTML = items.map(item => `
+                    <div class="summary-item">
+                        <div class="summary-label">${item.label}</div>
+                        <div class="summary-value">${item.value}</div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update total
+            totalPrice.textContent = `K${total.toLocaleString()}`;
+        }
+        
+        function calculatePhotographyTotal() {
+            const basePrice = photographyPricing[photographyState.peopleCount];
+            let total = 0;
+            
+            // Normal pictures
+            if (photographyState.normalSelected) {
+                total += photographyState.normalPictures * basePrice;
+            }
+            
+            // Express pictures
+            if (photographyState.expressSelected && photographyState.expressType !== 'none' && photographyState.expressPictures > 0) {
+                const expressPricePerPic = expressPricing[photographyState.expressType];
+                total += photographyState.expressPictures * (basePrice + expressPricePerPic);
+            }
+            
+            return total;
+        }
+        
+        function updateNavTotal() {
+            const total = calculatePhotographyTotal();
+            navTotal.textContent = `Grand Total: K${total.toLocaleString()}`;
+        }
+        
+        function updateStepDisplay() {
+            // Update step indicators
+            steps.forEach(step => {
+                const stepNum = parseInt(step.getAttribute('data-step'));
+                if (stepNum === photographyState.currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+            
+            // Update step contents
+            stepContents.forEach(content => {
+                const contentId = content.id;
+                const contentStep = parseInt(contentId.replace('step', ''));
+                if (contentStep === photographyState.currentStep) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+            
+            // Update navigation buttons
+            if (photographyState.currentStep === 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'inline-flex';
+                viewSummaryBtn.style.display = 'none';
+            } else if (photographyState.currentStep === 3) {
+                prevBtn.style.display = 'none'; // Remove back button on last page
+                nextBtn.style.display = 'none';
+                viewSummaryBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'inline-flex';
+                nextBtn.style.display = 'inline-flex';
+                viewSummaryBtn.style.display = 'none';
+            }
+            
+            // Scroll to top when changing steps
+            window.scrollTo(0, 0);
+        }
+        
+        function sendToWhatsApp() {
+            const total = calculatePhotographyTotal();
+            
+            // Create message with order details
+            let message = `Hello Eran Studio! I'm interested in your photography services.%0A%0A`;
+            message += `*Order Details:*%0A`;
+            
+            const basePrice = photographyPricing[photographyState.peopleCount];
+            
+            // People count
+            message += `- ${photographyState.peopleCount} People: K${basePrice}/pic%0A`;
+            
+            // Normal pictures
+            if (photographyState.normalSelected && photographyState.normalPictures > 0) {
+                const normalTotal = photographyState.normalPictures * basePrice;
+                message += `- ${photographyState.normalPictures} Normal Pictures: K${normalTotal.toLocaleString()}%0A`;
+            }
+            
+            // Express pictures
+            if (photographyState.expressSelected && photographyState.expressType !== 'none' && photographyState.expressPictures > 0) {
+                const expressPricePerPic = expressPricing[photographyState.expressType];
+                const expressTotal = photographyState.expressPictures * (basePrice + expressPricePerPic);
+                message += `- ${photographyState.expressPictures} ${photographyState.expressType} Express: K${expressTotal.toLocaleString()}%0A`;
+            }
+            
+            message += `%0A*Grand Total: K${total.toLocaleString()}*%0A%0A`;
+            message += `Please let me know the next steps to book this service.`;
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/265997761194?text=${message}`, '_blank');
+        }
+        
+        function sendReelsToWhatsApp() {
+            let total = 0;
+            
+            // Create message with order details
+            let message = `Hello Eran Studio! I'm interested in your Reels services.%0A%0A`;
+            message += `*Order Details:*%0A`;
+            
+            // Basic Reel
+            if (reelsState.basic.selected) {
+                message += `- Basic Reel: MWK ${reelsState.basic.price.toLocaleString()}%0A`;
+                total += reelsState.basic.price;
+            }
+            
+            // Standard Reel
+            if (reelsState.standard.selected) {
+                message += `- Standard Reel: MWK ${reelsState.standard.price.toLocaleString()}%0A`;
+                total += reelsState.standard.price;
+            }
+            
+            // Premium Reel
+            if (reelsState.premium.selected) {
+                message += `- Premium Reel: MWK ${reelsState.premium.price.toLocaleString()}%0A`;
+                total += reelsState.premium.price;
+            }
+            
+            message += `%0A*Grand Total: MWK ${total.toLocaleString()}*%0A%0A`;
+            message += `Please let me know the next steps to book this service.`;
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/265997761194?text=${message}`, '_blank');
+        }
+        
+        function sendPortraitsToWhatsApp() {
+            let total = 0;
+            
+            // Create message with order details
+            let message = `Hello Eran Studio! I'm interested in your Portraits services.%0A%0A`;
+            message += `*Order Details:*%0A`;
+            
+            // A3
+            if (portraitsState.a3.selected && portraitsState.a3.quantity > 0) {
+                const a3Total = portraitsState.a3.quantity * portraitsState.a3.price;
+                message += `- ${portraitsState.a3.quantity} A3 Canvas(es): K ${a3Total.toLocaleString()}%0A`;
+                total += a3Total;
+            }
+            
+            // A2
+            if (portraitsState.a2.selected && portraitsState.a2.quantity > 0) {
+                const a2Total = portraitsState.a2.quantity * portraitsState.a2.price;
+                message += `- ${portraitsState.a2.quantity} A2 Canvas(es): K ${a2Total.toLocaleString()}%0A`;
+                total += a2Total;
+            }
+            
+            // A1
+            if (portraitsState.a1.selected && portraitsState.a1.quantity > 0) {
+                const a1Total = portraitsState.a1.quantity * portraitsState.a1.price;
+                message += `- ${portraitsState.a1.quantity} A1 Canvas(es): K ${a1Total.toLocaleString()}%0A`;
+                total += a1Total;
+            }
+            
+            // A0
+            if (portraitsState.a0.selected && portraitsState.a0.quantity > 0) {
+                const a0Total = portraitsState.a0.quantity * portraitsState.a0.price;
+                message += `- ${portraitsState.a0.quantity} A0 Canvas(es): K ${a0Total.toLocaleString()}%0A`;
+                total += a0Total;
+            }
+            
+            message += `%0A*Grand Total: K ${total.toLocaleString()}*%0A%0A`;
+            message += `Please let me know the next steps to book this service.`;
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/265997761194?text=${message}`, '_blank');
+        }
+        
+        function sendOverallToWhatsApp() {
+            let message = `Hello Eran Studio! I'm interested in multiple services.%0A%0A`;
+            message += `*Complete Order Details:*%0A%0A`;
+            
+            let grandTotal = 0;
+            
+            // Photography section
+            if (selectedServices.includes('photography')) {
+                const photographyTotal = calculatePhotographyTotal();
+                if (photographyTotal > 0) {
+                    message += `*Photography:*%0A`;
+                    
+                    const basePrice = photographyPricing[photographyState.peopleCount];
+                    
+                    // People count
+                    message += `- ${photographyState.peopleCount} People: K${basePrice}/pic%0A`;
+                    
+                    // Normal pictures
+                    if (photographyState.normalSelected && photographyState.normalPictures > 0) {
+                        const normalTotal = photographyState.normalPictures * basePrice;
+                        message += `- ${photographyState.normalPictures} Normal Pictures: K${normalTotal.toLocaleString()}%0A`;
+                    }
+                    
+                    // Express pictures
+                    if (photographyState.expressSelected && photographyState.expressType !== 'none' && photographyState.expressPictures > 0) {
+                        const expressPricePerPic = expressPricing[photographyState.expressType];
+                        const expressTotal = photographyState.expressPictures * (basePrice + expressPricePerPic);
+                        message += `- ${photographyState.expressPictures} ${photographyState.expressType} Express: K${expressTotal.toLocaleString()}%0A`;
+                    }
+                    
+                    message += `Subtotal: K${photographyTotal.toLocaleString()}%0A%0A`;
+                    grandTotal += photographyTotal;
+                }
+            }
+            
+            // Reels section
+            if (selectedServices.includes('reels')) {
+                let reelsTotal = 0;
+                
+                message += `*Reels:*%0A`;
+                
+                // Basic Reel
+                if (reelsState.basic.selected) {
+                    message += `- Basic Reel: MWK ${reelsState.basic.price.toLocaleString()}%0A`;
+                    reelsTotal += reelsState.basic.price;
+                }
+                
+                // Standard Reel
+                if (reelsState.standard.selected) {
+                    message += `- Standard Reel: MWK ${reelsState.standard.price.toLocaleString()}%0A`;
+                    reelsTotal += reelsState.standard.price;
+                }
+                
+                // Premium Reel
+                if (reelsState.premium.selected) {
+                    message += `- Premium Reel: MWK ${reelsState.premium.price.toLocaleString()}%0A`;
+                    reelsTotal += reelsState.premium.price;
+                }
+                
+                if (reelsTotal > 0) {
+                    message += `Subtotal: MWK ${reelsTotal.toLocaleString()}%0A%0A`;
+                    grandTotal += reelsTotal;
+                } else {
+                    // Remove the Reels section if no items
+                    message = message.replace(`*Reels:*%0A`, '');
+                }
+            }
+            
+            // Portraits section
+            if (selectedServices.includes('portraits')) {
+                let portraitsTotal = 0;
+                
+                message += `*Portraits:*%0A`;
+                
+                // A3
+                if (portraitsState.a3.selected && portraitsState.a3.quantity > 0) {
+                    const a3Total = portraitsState.a3.quantity * portraitsState.a3.price;
+                    message += `- ${portraitsState.a3.quantity} A3 Canvas(es): K ${a3Total.toLocaleString()}%0A`;
+                    portraitsTotal += a3Total;
+                }
+                
+                // A2
+                if (portraitsState.a2.selected && portraitsState.a2.quantity > 0) {
+                    const a2Total = portraitsState.a2.quantity * portraitsState.a2.price;
+                    message += `- ${portraitsState.a2.quantity} A2 Canvas(es): K ${a2Total.toLocaleString()}%0A`;
+                    portraitsTotal += a2Total;
+                }
+                
+                // A1
+                if (portraitsState.a1.selected && portraitsState.a1.quantity > 0) {
+                    const a1Total = portraitsState.a1.quantity * portraitsState.a1.price;
+                    message += `- ${portraitsState.a1.quantity} A1 Canvas(es): K ${a1Total.toLocaleString()}%0A`;
+                    portraitsTotal += a1Total;
+                }
+                
+                // A0
+                if (portraitsState.a0.selected && portraitsState.a0.quantity > 0) {
+                    const a0Total = portraitsState.a0.quantity * portraitsState.a0.price;
+                    message += `- ${portraitsState.a0.quantity} A0 Canvas(es): K ${a0Total.toLocaleString()}%0A`;
+                    portraitsTotal += a0Total;
+                }
+                
+                if (portraitsTotal > 0) {
+                    message += `Subtotal: K ${portraitsTotal.toLocaleString()}%0A%0A`;
+                    grandTotal += portraitsTotal;
+                } else {
+                    // Remove the Portraits section if no items
+                    message = message.replace(`*Portraits:*%0A`, '');
+                }
+            }
+            
+            message += `*Grand Total: K ${grandTotal.toLocaleString()}*%0A%0A`;
+            message += `Please let me know the next steps to book these services.`;
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/265997761194?text=${message}`, '_blank');
+        }
+        
+        // Swipe Functions
+        function touchStart(event) {
+            if (event.type === 'touchstart') {
+                startX = event.touches[0].clientX;
+            } else {
+                startX = event.clientX;
+                event.preventDefault();
+            }
+            
+            isDragging = true;
+            swipeWrapper.style.transition = 'none';
+        }
+        
+        function touchMove(event) {
+            if (!isDragging) return;
+            
+            let currentX = 0;
+            
+            if (event.type === 'touchmove') {
+                currentX = event.touches[0].clientX;
+            } else {
+                currentX = event.clientX;
+            }
+            
+            const diff = currentX - startX;
+            currentTranslate = prevTranslate + diff;
+            
+            // Limit swipe to container bounds
+            if (currentTranslate > 0) {
+                currentTranslate = 0;
+            } else if (currentTranslate < -swipeContainer.offsetWidth) {
+                currentTranslate = -swipeContainer.offsetWidth;
+            }
+            
+            setSliderPosition();
+        }
+        
+        function touchEnd() {
+            isDragging = false;
+            swipeWrapper.style.transition = 'transform 0.5s ease';
+            
+            const movedBy = currentTranslate - prevTranslate;
+            
+            // If swipe was significant enough, change slide
+            if (Math.abs(movedBy) > swipeContainer.offsetWidth * 0.1) {
+                if (movedBy > 0 && currentIndex > 0) {
+                    currentIndex--;
+                } else if (movedBy < 0 && currentIndex < 1) {
+                    currentIndex++;
+                }
+            }
+            
+            setPositionByIndex();
+            
+            // Update photography state based on current slide
+            photographyState.peopleCount = currentIndex === 0 ? '1-2' : '3-7';
+            updatePhotographyDisplay();
+        }
+        
+        function setSliderPosition() {
+            swipeWrapper.style.transform = `translateX(${currentTranslate}px)`;
+        }
+        
+        function setPositionByIndex() {
+            currentTranslate = currentIndex * -swipeContainer.offsetWidth;
+            prevTranslate = currentTranslate;
+            setSliderPosition();
+            updateSwipeDots();
+        }
+        
+        function goToSlide(index) {
+            currentIndex = index;
+            setPositionByIndex();
+            
+            // Update photography state based on current slide
+            photographyState.peopleCount = currentIndex === 0 ? '1-2' : '3-7';
+            updatePhotographyDisplay();
+        }
+        
+        function updateSwipeDots() {
+            swipeDots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initialize Photography Booking
+        updatePhotographyDisplay();
+        updateStepDisplay();
+        
+        // Add some interactive animations
+        document.querySelectorAll('.feature').forEach(feature => {
+            feature.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.03)';
+            });
+            
+            feature.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
